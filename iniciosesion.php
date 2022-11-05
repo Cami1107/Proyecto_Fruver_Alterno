@@ -7,14 +7,13 @@ session_start();
 if ($_SESSION['login']) {
     // validacion de rol administrador
     if ($_SESSION['datos']['id_usuario']==1 || $_SESSION['datos']['rol_id']==1){
-        header("Location: adminPlantilla.php");
+        header("Location: menuAdmin.php");
     // validacion tol empleado
     }elseif($_SESSION ['datos']['rol_id']== 2){
         header("Location: empleadoPlantilla.html");
     }else{
         header("Location: frutas.php");
-    }
-    
+    }    
 } else {
     $_SESSION['login'] = false;
     //echo "<script>window.location.reload()</script>";
@@ -101,7 +100,6 @@ var_dump ($_SESSION);
             $leer = $conexion->prepare($sql);
             $leer->execute();
             $fila = $leer->fetch(PDO::FETCH_ASSOC);
- 
             if (!empty($fila)) {
                 //var_dump($fila);
                 $correDb = $fila['correo_usuario'];
@@ -115,7 +113,7 @@ var_dump ($_SESSION);
                     if ($_SESSION['datos']['rol_id']==1) {
                         echo "
                         <script>alert('Inicio Sesion ".$_SESSION['datos']['nombre_usuario']." ".$_SESSION['datos']['apellido_usuario']."');</script>
-                        <script>window.location.replace('adminPlantilla.php');</script>";
+                        <script>window.location.replace('menuAdmin.php');</script>";
                     }elseif($_SESSION ['datos']['rol_id']== 2){
                         header("Location: empleadoPlantilla.html");
                     }else{
@@ -140,11 +138,11 @@ var_dump ($_SESSION);
                     <legend class="text-aling">Inicio de sesión</legend>
                     <div class="mb-3">
                         <label class="form-label">Correo electronico:</label>
-                        <input type="email" class="form-control" placeholder="" name="login">
+                        <input type="email" class="form-control" placeholder="" name="login" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3" >
                         <label class="form-label">Contraseña:</label>
-                        <input type="password" class="form-control" placeholder="" name="contrasena">
+                        <input type="password" class="form-control" placeholder="" name="contrasena" required>
                     </div>
                     <a href="restablecimiento.html">
                         <p>Olvidaste tu contraseña?</p>
@@ -153,7 +151,7 @@ var_dump ($_SESSION);
                         <p>Registrarme</p>
                     </a>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox">
+                        <input class="form-check-input" type="checkbox" required>
                         <label class="form-check-label">
                             Acepto terminos y condiciones
                         </label>
@@ -161,6 +159,13 @@ var_dump ($_SESSION);
                     <button type="submit" class="btn btn-primary">Inicio Sesión</button>
                     <a href="index.html" class="btn btn-danger">Volver</a>
                 </form>
+                <script>
+                    if (form-check){
+                        
+                    }else{
+
+                    }
+                </script>
             </div>
 
         </div>

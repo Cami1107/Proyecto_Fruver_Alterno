@@ -1,4 +1,3 @@
-
 let modalEditar = document.querySelector('#editarModal'); //
 let modalDelete = document.querySelector('#deleteModal');
 modalEditar.addEventListener('show.bs.modal', event => {
@@ -19,7 +18,7 @@ modalEditar.addEventListener('show.bs.modal', event => {
         }
     }else{
         let userId = event.explicitOriginalTarget.getAttribute('user-id');
-        fetch(`http://localhost/archivos/Proyecto_Fruver_Alterno/api/getUser.php?userId=${userId}`)
+        fetch(`http://localhost/archivos/Proyecto_Fruver_Alterno/api/api_Users/getUser.php?userId=${userId}`)
         .then(response => response.json())
         .then(data =>{
             store.actualUser = data;

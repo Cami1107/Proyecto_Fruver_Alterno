@@ -9,6 +9,8 @@ const store = reactive({
   allUsers: [],
   createUser(){
     //Funcion para crear datos
+    // dataform es una función de js 
+    // recibe la informacion desde un json, lo formatea como tabla a la db
     let dataForm = new FormData()
     dataForm.append("create","yes")
     dataForm.append("data", JSON.stringify(this.actualUser))
